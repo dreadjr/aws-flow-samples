@@ -1,0 +1,37 @@
+apply plugin: 'java'
+
+repositories {
+  maven { url '.m2/repository' }
+  mavenCentral()
+}
+
+dependencies {
+    compile 'com.amazonaws:aws-java-sdk:1.8.9.1'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    
+    // flow framework build tools dependencies
+    compile 'aws-java-sdk-flow-build-tools:aws-java-sdk-flow-build-tools:1.8.9.1'
+    compile 'org.freemarker:freemarker:2.3.20'
+    compile 'org.slf4j:slf4j-log4j12:1.7.7'
+
+    runtime 'org.aspectj:aspectjweaver:${aspectjVersion}'
+    
+    testCompile 'junit:junit:4.11'
+}
+
+ext {
+    aptSourceDir = file("${buildDir}/generated-sources/java")
+}
+
+sourceSets {
+    generatedSources {
+      java.srcDir aptSourceDir
+    }
+  }
+
+compileJava {
+    doFirst {
+        aptSourceDir.mkdirs()
+    }
+    options.compilerArgs += ['-s', aptSourceDir]
+}

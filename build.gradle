@@ -1,25 +1,25 @@
-apply plugin: 'java'
-apply plugin: 'idea'
+apply plugin: "java"
+apply plugin: "idea"
 apply from: "aspectj.groovy"
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 repositories {
-  maven { url '.m2/repository' }
+  maven { url ".m2/repository" }
   mavenCentral()
 }
 
 dependencies {
-  compile 'com.amazonaws:aws-java-sdk:1.8.9.1'
-  compile 'aws-java-sdk-flow-build-tools:aws-java-sdk-flow-build-tools:1.8.9.1'
-  compile 'junit:junit:4.11'
+  compile "com.amazonaws:aws-java-sdk:${awsVersion}"
+  compile "aws-java-sdk-flow-build-tools:aws-java-sdk-flow-build-tools:${awsVersion}"
+  compile "junit:junit:4.11"
 
-  compile 'log4j:log4j:1.2.17'
-  compile 'org.freemarker:freemarker:2.3.18'
+  compile "log4j:log4j:1.2.17"
+  compile "org.freemarker:freemarker:2.3.18"
   compile "org.springframework:spring-context:${springVersion}"
   compile "org.springframework:spring-core:${springVersion}"
   compile "org.springframework:spring-test:${springVersion}"
 
-  testCompile 'junit:junit:4.11'
+  testCompile "junit:junit:4.11"
 }

@@ -18,6 +18,6 @@ public class SampleConstants {
     public static final String HOME_DIRECTORY_PROPERTY = "user.home";
     public static final String HOME_DIRECTORY_FILENAME = "samples.config";
     public static final String ACCESS_PROPERTIES_FILENAME = "samples.config";
-    public static final String ACCESS_PROPERTIES_RELATIVE_PATH  = "../../../common";
+    public static final String ACCESS_PROPERTIES_RELATIVE_PATH  = "./";
     public static final String ACCESS_PROPERTIES_ENVIRONMENT_VARIABLE = "AWS_SWF_SAMPLES_CONFIG";
 }

@@ -14,17 +14,17 @@
  */
 package com.amazonaws.services.simpleworkflow.flow.examples.imageprocessing;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow;
+import com.amazonaws.services.simpleworkflow.flow.ActivityWorker;
+import com.amazonaws.services.simpleworkflow.flow.examples.common.ConfigHelper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
-
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow;
-import com.amazonaws.services.simpleworkflow.flow.examples.common.ConfigHelper;
-import com.amazonaws.services.simpleworkflow.flow.ActivityWorker;
 
 /**
  * This is the process which hosts all Activities in this sample

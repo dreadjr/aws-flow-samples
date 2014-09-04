@@ -23,7 +23,7 @@ import com.amazonaws.services.simpleworkflow.flow.WorkflowContext;
 import com.amazonaws.services.simpleworkflow.flow.annotations.Asynchronous;
 import com.amazonaws.services.simpleworkflow.flow.core.Promise;
 import com.amazonaws.services.simpleworkflow.flow.core.Settable;
-import com.amazonaws.services.simpleworkflow.flow.core.TryFinally;
+import com.amazonaws.services.simpleworkflow.flow.core.TryCatchFinally;
 
 /**
  * This implementation of FileProcessingWorkflow downloads the file, zips it and uploads it back to S3 
@@ -53,19 +53,24 @@ public class ImageProcessingWorkflowImpl implements ImageProcessingWorkflow {
         final String localTargetFilename = workflowRunId + "_" + localTarget.getName(); 
         final String remoteFilename = "converted_" + localTargetFilename; 
     	
-    	new TryFinally() {
+    	new TryCatchFinally() {
             @Override
             protected void doTry() throws Throwable {
             	// Call download activity to download the file
             	Promise<String> activityWorkerTaskList = store.download(sourceBucketName, sourceFilename, localSourceFilename);
             	// Chain the promise to the settable
             	taskList.chain(activityWorkerTaskList);
-                // Call processFile activity to zip tthe file
+                // Call processFile activity to zip the file
             	Promise<Void> fileProcessed = processFileOnHost(option, localSourceFilename, localTargetFilename, activityWorkerTaskList);                
                 // Call upload activity to upload zipped file
             	if (bucketName != null && bucketName.length() > 0) {
             		upload(bucketName, localTargetFilename, remoteFilename, taskList, fileProcessed);
             	}
+            }
+
+            @Override
+            protected void doCatch(Throwable e) throws Throwable {
+                throw e;
             }
 
             @Override

@@ -40,7 +40,7 @@ public class WorkflowExecutionStarter {
         String executionId = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_EXECUTION_ID_KEY) + UUID.randomUUID();
         String sourceBucketName = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY);
         String sourceFilename = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_INPUT_SOURCEFILENAME_KEY);
-        String targetBucketName = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_INPUT_BUCKET_KEY);
+        String targetBucketName = configHelper.getFirstValueFromConfig(ImageProcessingConfigKeys.AWS_BUCKET_NAME, ImageProcessingConfigKeys.WORKFLOW_INPUT_BUCKET_KEY);
         String imageProcessingOptionString = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_INPUT_IMAGEPROCESSINGOPTION_KEY);
         
         ImageProcessingOption imageProcessingOption = ImageProcessingOption.valueOf(imageProcessingOptionString);

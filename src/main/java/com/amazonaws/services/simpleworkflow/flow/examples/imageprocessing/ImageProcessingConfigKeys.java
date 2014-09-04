@@ -24,4 +24,6 @@ class ImageProcessingConfigKeys {
     public static final String WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY = "ImageProcessing.Workflow.Input.SourceBucketName";
     public static final String WORKFLOW_INPUT_BUCKET_KEY = "ImageProcessing.Workflow.Input.BucketName";
     public static final String WORKFLOW_INPUT_IMAGEPROCESSINGOPTION_KEY = "ImageProcessing.Workflow.Input.ImageProcessingOption";
+
+    public static final String AWS_BUCKET_NAME = "AWS_BUCKET_NAME";
 }

@@ -14,12 +14,6 @@
  */
 package com.amazonaws.services.simpleworkflow.flow.examples.common;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -27,6 +21,13 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow;
 import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflowClient;
+import com.amazonaws.util.StringUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 
 /**
@@ -53,14 +54,20 @@ public class ConfigHelper {
         FileInputStream inputStream = new FileInputStream(propertiesFile);
         sampleConfig = new Properties();
         sampleConfig.load(inputStream);
+        sampleConfig.load(Runtime.getRuntime().exec("env").getInputStream());
+
 
         this.swfServiceUrl = sampleConfig.getProperty(ConfigKeys.SWF_SERVICE_URL_KEY);
-        this.swfAccessId = sampleConfig.getProperty(ConfigKeys.SWF_ACCESS_ID_KEY);
-        this.swfSecretKey = sampleConfig.getProperty(ConfigKeys.SWF_SECRET_KEY_KEY);
+        //        this.swfAccessId = sampleConfig.getProperty(ConfigKeys.SWF_ACCESS_ID_KEY);
+        //        this.swfSecretKey = sampleConfig.getProperty(ConfigKeys.SWF_SECRET_KEY_KEY);
+        this.swfAccessId = getFirstValueFromConfig(ConfigKeys.AWS_ACCESS_KEY_ID, ConfigKeys.SWF_ACCESS_ID_KEY);
+        this.swfSecretKey = getFirstValueFromConfig(ConfigKeys.AWS_SECRET_ACCESS_KEY, ConfigKeys.SWF_SECRET_KEY_KEY);
 
-        this.s3AccessId = sampleConfig.getProperty(ConfigKeys.S3_ACCESS_ID_KEY);
-        this.s3SecretKey = sampleConfig.getProperty(ConfigKeys.S3_SECRET_KEY_KEY);
-        
+        //        this.s3AccessId = sampleConfig.getProperty(ConfigKeys.S3_ACCESS_ID_KEY);
+        //        this.s3SecretKey = sampleConfig.getProperty(ConfigKeys.S3_SECRET_KEY_KEY);
+        this.s3AccessId = getFirstValueFromConfig(ConfigKeys.AWS_ACCESS_KEY_ID, ConfigKeys.S3_ACCESS_ID_KEY);
+        this.s3SecretKey = getFirstValueFromConfig(ConfigKeys.AWS_SECRET_ACCESS_KEY, ConfigKeys.S3_SECRET_KEY_KEY);
+
         this.domain = sampleConfig.getProperty(ConfigKeys.DOMAIN_KEY);
     }
 
@@ -121,5 +128,16 @@ public class ConfigHelper {
     
     public String getValueFromConfig(String key) {
     	return sampleConfig.getProperty(key);
+    }
+
+    public String getFirstValueFromConfig(String... args) {
+        for (String arg : args) {
+            String value = sampleConfig.getProperty(arg);
+            if (!StringUtils.isNullOrEmpty(value)) {
+                return value;
+            }
+        }
+
+        return null;
     }
 }

@@ -16,14 +16,14 @@ package com.amazonaws.services.simpleworkflow.flow.examples.fileprocessing;
 
 public class FileProcessingConfigKeys {
 
-    public static final String ACTIVITY_WORKER_LOCALFOLDER = "Activity.Worker.LocalFolder";
+    public static final String ACTIVITY_WORKER_LOCALFOLDER = "FileProcessing.Activity.Worker.LocalFolder";
     
-    public static final String WORKFLOW_INPUT_SOURCEFILENAME_KEY = "Workflow.Input.SourceFileName";
+    public static final String WORKFLOW_INPUT_SOURCEFILENAME_KEY = "FileProcessing.Workflow.Input.SourceFileName";
     
-    public static final String WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY = "Workflow.Input.SourceBucketName";
+    public static final String WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY = "FileProcessing.Workflow.Input.SourceBucketName";
     
-    public static final String WORKFLOW_INPUT_TARGETFILENAME_KEY = "Workflow.Input.TargetFileName";
+    public static final String WORKFLOW_INPUT_TARGETFILENAME_KEY = "FileProcessing.Workflow.Input.TargetFileName";
     
-    public static final String WORKFLOW_INPUT_TARGETBUCKETNAME_KEY = "Workflow.Input.TargetBucketName";
+    public static final String WORKFLOW_INPUT_TARGETBUCKETNAME_KEY = "FileProcessing.Workflow.Input.TargetBucketName";
 
 }

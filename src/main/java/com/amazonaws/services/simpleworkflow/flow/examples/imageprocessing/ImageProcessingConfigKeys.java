@@ -15,14 +15,13 @@
 package com.amazonaws.services.simpleworkflow.flow.examples.imageprocessing;
 
 class ImageProcessingConfigKeys {
-	public static final String ACTIVITY_WORKER_LOCALFOLDER = "Activity.Worker.LocalFolder";
-    public static final String ACTIVITY_WORKER_COMMON_TASKLIST = "Activity.Worker.CommonTaskList";
-    public static final String WORKFLOW_WORKER_TASKLIST = "Workflow.Worker.Tasklist";
+	public static final String ACTIVITY_WORKER_LOCALFOLDER = "ImageProcessing.Activity.Worker.LocalFolder";
+    public static final String ACTIVITY_WORKER_COMMON_TASKLIST = "ImageProcessing.Activity.Worker.CommonTaskList";
+    public static final String WORKFLOW_WORKER_TASKLIST = "ImageProcessing.Workflow.Worker.Tasklist";
     
-    
-    public static final String WORKFLOW_EXECUTION_ID_KEY= "Workflow.Execution.Id";
-    public static final String WORKFLOW_INPUT_SOURCEFILENAME_KEY = "Workflow.Input.SourceFileName";
-    public static final String WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY = "Workflow.Input.SourceBucketName";
-    public static final String WORKFLOW_INPUT_BUCKET_KEY = "Workflow.Input.BucketName";
-    public static final String WORKFLOW_INPUT_IMAGEPROCESSINGOPTION_KEY = "Workflow.Input.ImageProcessingOption";
+    public static final String WORKFLOW_EXECUTION_ID_KEY= "ImageProcessing.Workflow.Execution.Id";
+    public static final String WORKFLOW_INPUT_SOURCEFILENAME_KEY = "ImageProcessing.Workflow.Input.SourceFileName";
+    public static final String WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY = "ImageProcessing.Workflow.Input.SourceBucketName";
+    public static final String WORKFLOW_INPUT_BUCKET_KEY = "ImageProcessing.Workflow.Input.BucketName";
+    public static final String WORKFLOW_INPUT_IMAGEPROCESSINGOPTION_KEY = "ImageProcessing.Workflow.Input.ImageProcessingOption";
 }

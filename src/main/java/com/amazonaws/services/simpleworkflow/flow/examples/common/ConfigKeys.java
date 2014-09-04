@@ -15,7 +15,10 @@
 package com.amazonaws.services.simpleworkflow.flow.examples.common;
 
 public class ConfigKeys {
-	
+    public static final String AWS_REGION = "AWS_REGION";
+    public static final String AWS_ACCESS_KEY_ID = "AWS_ACCESS_KEY_ID";
+    public static final String AWS_SECRET_ACCESS_KEY = "AWS_SECRET_ACCESS_KEY";
+
     public static final String SWF_SERVICE_URL_KEY = "service.url";
     public static final String SWF_ACCESS_ID_KEY = "AWS.Access.ID";
     public static final String SWF_SECRET_KEY_KEY = "AWS.Secret.Key";

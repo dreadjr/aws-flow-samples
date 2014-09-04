@@ -37,7 +37,6 @@ public class WorkflowExecutionStarter {
         domain = configHelper.getDomain();
         
         // Start Workflow instance
-        String executionId = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_EXECUTION_ID_KEY) + UUID.randomUUID();
         String sourceBucketName = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY);
         String sourceFilename = configHelper.getValueFromConfig(ImageProcessingConfigKeys.WORKFLOW_INPUT_SOURCEFILENAME_KEY);
         String targetBucketName = configHelper.getFirstValueFromConfig(ImageProcessingConfigKeys.AWS_BUCKET_NAME, ImageProcessingConfigKeys.WORKFLOW_INPUT_BUCKET_KEY);
@@ -46,7 +45,7 @@ public class WorkflowExecutionStarter {
         ImageProcessingOption imageProcessingOption = ImageProcessingOption.valueOf(imageProcessingOptionString);
         
         ImageProcessingWorkflowClientExternalFactory clientFactory = new ImageProcessingWorkflowClientExternalFactoryImpl(swfService, domain);
-        ImageProcessingWorkflowClientExternal workflow = clientFactory.getClient(executionId);
+        ImageProcessingWorkflowClientExternal workflow = clientFactory.getClient();
         workflow.processImage(sourceBucketName, sourceFilename, targetBucketName, imageProcessingOption);
         System.exit(0);
     }    

@@ -19,7 +19,6 @@ class ImageProcessingConfigKeys {
     public static final String ACTIVITY_WORKER_COMMON_TASKLIST = "ImageProcessing.Activity.Worker.CommonTaskList";
     public static final String WORKFLOW_WORKER_TASKLIST = "ImageProcessing.Workflow.Worker.Tasklist";
     
-    public static final String WORKFLOW_EXECUTION_ID_KEY= "ImageProcessing.Workflow.Execution.Id";
     public static final String WORKFLOW_INPUT_SOURCEFILENAME_KEY = "ImageProcessing.Workflow.Input.SourceFileName";
     public static final String WORKFLOW_INPUT_SOURCEBUCKETNAME_KEY = "ImageProcessing.Workflow.Input.SourceBucketName";
     public static final String WORKFLOW_INPUT_BUCKET_KEY = "ImageProcessing.Workflow.Input.BucketName";

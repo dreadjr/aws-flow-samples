@@ -14,11 +14,11 @@
  */
 package com.amazonaws.services.simpleworkflow.flow.examples.imageprocessing;
 
-import java.io.IOException;
-
 import com.amazonaws.services.simpleworkflow.flow.annotations.Execute;
 import com.amazonaws.services.simpleworkflow.flow.annotations.Workflow;
 import com.amazonaws.services.simpleworkflow.flow.annotations.WorkflowRegistrationOptions;
+
+import java.io.IOException;
 
 /**
  * Contract for file processing workflow
@@ -28,7 +28,7 @@ import com.amazonaws.services.simpleworkflow.flow.annotations.WorkflowRegistrati
 		defaultExecutionStartToCloseTimeoutSeconds = 600, 
         defaultTaskStartToCloseTimeoutSeconds = 300)
 public interface ImageProcessingWorkflow {
-	@Execute(name = "ProcessFile", version = "1.0")
+	@Execute(name = "ImageProcessFile", version = "1.0")
     public void processImage(String sourceBucketName, String sourceFilename, String targetBucketName, 
     		ImageProcessingOption option) throws IOException;
 }

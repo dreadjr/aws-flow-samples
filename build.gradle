@@ -1,7 +1,21 @@
+buildscript {
+  repositories { jcenter() }
+  dependencies {
+    classpath 'com.github.jengelman.gradle.plugins:shadow:1.1.1'
+  }
+}
+
 apply plugin: "java"
 apply plugin: "idea"
 apply from: "aspectj.groovy"
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
+// UTF-8 should be standard by now. So use it!
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+mainClassName = 'com.amazonaws.services.simpleworkflow.flow.examples.imageprocessing.ActivityHost'
+version = '1.0'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
@@ -22,4 +36,25 @@ dependencies {
   compile "org.springframework:spring-test:${springVersion}"
 
   testCompile "junit:junit:4.11"
+}
+
+shadowJar {
+  mergeServiceFiles()
+
+  exclude 'META-INF/*.DSA'
+  exclude 'META-INF/*.RSA'
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': mainClassName
+    attributes 'Implementation-Title': 'Title', 'Implementation-Version': version
+  }
+}
+
+run {
+  if (project.hasProperty('mainClass')) {
+    main = mainClass //?: mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+  }
 }

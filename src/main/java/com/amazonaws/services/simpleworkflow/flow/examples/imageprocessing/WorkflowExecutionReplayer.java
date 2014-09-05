@@ -36,9 +36,13 @@ public class WorkflowExecutionReplayer {
         swfService = configHelper.createSWFClient();
         domain = configHelper.getDomain();
 
-        // TODO: commandLine args
-        String workflowId = "testrunb223c187-62e3-4b60-a140-802065b25ba1";
-        String runId = "22b9XPTjgUqJvFk60mvCdmDfHrb6FT44JmsXMBoPH7/nY=";
+        if (args.length < 2) {
+            System.out.println("Usage: WorkflowExecutionReplayer {runId} {workflowId}");
+            System.exit(-1);
+        }
+
+        String runId = args[0];
+        String workflowId = args[1];
         Class<ImageProcessingWorkflowImpl> workflowImplementationType = ImageProcessingWorkflowImpl.class;
         WorkflowExecution workflowExecution = new WorkflowExecution();
         workflowExecution.setWorkflowId(workflowId);
